@@ -1,6 +1,8 @@
 # MobileNetApp for iOS
 
-![DEMO](https://github.com/MachineLearningOfThings/mot-ios-tensorflow/blob/master/demo/MobileNetApp_test001.gif?raw=true)
+
+
+![DEMO-CoreML](https://github.com/tucan9389/MobileNetApp-CoreML/raw/master/resource/MobileNet-CoreML-DEMO.gif?raw=true)
 
 ## 필요환경
 
