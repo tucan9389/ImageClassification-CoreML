@@ -4,7 +4,7 @@
 
 ![DEMO-CoreML](https://github.com/tucan9389/MobileNetApp-CoreML/raw/master/resource/MobileNet-CoreML-DEMO.gif?raw=true)
 
-## 필요환경
+## 요구환경
 
 - Xcode 9.2+
 - iOS 11.0+
