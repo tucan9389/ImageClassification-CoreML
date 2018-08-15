@@ -37,7 +37,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     // MARK: - AV 프로퍼티
     
     var videoCapture: VideoCapture!
-    let semaphore = DispatchSemaphore(value: 2)
     
     
     // MARK: - 라이프사이클 메소드
@@ -102,7 +101,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         guard let firstResult = results.first else {return}
         
         // 메인큐에서 결과 출력
-        DispatchQueue.main.async {
+        DispatchQueue.main.sync {
             self.showResults(identifier: "\(firstResult.identifier)".capitalized,
                              confidence: firstResult.confidence)
         }
@@ -113,8 +112,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         self.labelLabel.text = identifier
         self.confidenceLabel.text = "\(round(confidence * 100)) %"
         
-        self.semaphore.signal()
-        
     }
     
     
@@ -122,19 +119,12 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?/*, timestamp: CMTime*/) {
         
-        // 비디오 캡쳐 큐에서 실행된 videoCapture(::) 메소드는 멈추기
-        // 추론하는 동안은 메인스레드로 이동하여 처리
-        semaphore.wait()
-        
         // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
         // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
         if let pixelBuffer = pixelBuffer {
-            // 추론은 메인스레드에서 실행시키며
-            // 추론 결과값 출력도 메인스레드에서 처리 후,
-            // 멈춘 스레드를 풀어줌(semaphore.signal())
-            DispatchQueue.main.async {
-                self.predictUsingVision(pixelBuffer: pixelBuffer)
-            }
+            
+            // start predict
+            self.predictUsingVision(pixelBuffer: pixelBuffer)
         }
     }
 
