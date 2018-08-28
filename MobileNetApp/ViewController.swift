@@ -10,7 +10,7 @@ import UIKit
 import CoreML
 import Vision
 
-class ViewController: UIViewController, VideoCaptureDelegate {
+class ViewController: UIViewController {
     
     // MARK: - UI 프로퍼티
     
@@ -81,14 +81,32 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        resizePreviewLayer()
+    }
+    
     func resizePreviewLayer() {
         videoCapture.previewLayer?.frame = videoPreview.bounds
     }
-    
-    
-    
-    // MARK: - 추론하기
-    
+}
+
+// MARK: - VideoCaptureDelegate
+extension ViewController: VideoCaptureDelegate {
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?/*, timestamp: CMTime*/) {
+        
+        // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
+        // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
+        if let pixelBuffer = pixelBuffer {
+            
+            // start predict
+            self.predictUsingVision(pixelBuffer: pixelBuffer)
+        }
+    }
+}
+
+// MARK: - 추론하기
+extension ViewController {
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         
         // Vision이 입력이미지를 자동으로 크기조정을 해줄 것임.
@@ -113,21 +131,4 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         self.confidenceLabel.text = "\(round(confidence * 100)) %"
         
     }
-    
-    
-    // MARK: - VideoCaptureDelegate
-    
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?/*, timestamp: CMTime*/) {
-        
-        // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
-        // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
-        if let pixelBuffer = pixelBuffer {
-            
-            // start predict
-            self.predictUsingVision(pixelBuffer: pixelBuffer)
-        }
-    }
-
-
 }
-
