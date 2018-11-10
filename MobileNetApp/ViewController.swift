@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelLabel: UILabel!
     @IBOutlet weak var confidenceLabel: UILabel!
     
-    var coremlModel: MobileNet? = nil
+    typealias ClassifierModel = MobileNet
+    var coremlModel: ClassifierModel? = nil
     
     // MARK: - Vision 프로퍼티
     
@@ -47,7 +48,7 @@ class ViewController: UIViewController {
         // MobileNet 클래스는 `MobileNet.mlmodel`를 프로젝트에 넣고, 빌드시키면 자동으로 생성된 랩퍼 클래스
         // MobileNet에서 만든 model: MLModel 객체로 (Vision에서 사용할) VNCoreMLModel 객체를 생성
         // Vision은 모델의 입력 크기(이미지 크기)에 따라 자동으로 조정해 줌
-        visionModel = try? VNCoreMLModel(for: MobileNet().model)
+        visionModel = try? VNCoreMLModel(for: ClassifierModel().model)
         
         // 카메라 세팅
         setUpCamera()
@@ -117,6 +118,8 @@ extension ViewController {
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         guard let results = request.results as? [VNClassificationObservation] else { return }
         guard let firstResult = results.first else {return}
+        
+        print(firstResult.description)
         
         // 메인큐에서 결과 출력
         DispatchQueue.main.sync {
