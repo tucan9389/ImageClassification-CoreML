@@ -13,7 +13,7 @@
 ## 준비물
 
 - Core ML용 MobileNet 모델(`MobileNet.mlmodel`)
-  ☞ [애플 홈페이지에 가서 MobileNet 다운](https://developer.apple.com/kr/machine-learning/)
+  ☞ [애플 홈페이지에 가서 MobileNet 다운](https://developer.apple.com/kr/machine-learning/build-run-models)
 
 > MobileNet는 깊이 전반에 관해 분리 가능한 컨볼루션이 있는 간결한 아키텍처를 기반으로 경량의 심층 신경망을 구축합니다. 
 > 이미지에서 나무, 동물, 음식, 교통 수단, 사람 등 1000개의 카테고리로 나타나는 주요 물체를 감지합니다.
