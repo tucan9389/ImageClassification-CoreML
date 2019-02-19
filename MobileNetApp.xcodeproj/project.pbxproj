@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550AE90F221B843A0021C834 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550AE90E221B843A0021C834 /* Measure.swift */; };
 		556D1CE620BBA9FA0070537C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1CE520BBA9FA0070537C /* AppDelegate.swift */; };
 		556D1CE820BBA9FA0070537C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1CE720BBA9FA0070537C /* ViewController.swift */; };
 		556D1CEB20BBA9FA0070537C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556D1CE920BBA9FA0070537C /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		550AE90E221B843A0021C834 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		556D1CE220BBA9FA0070537C /* MobileNetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D1CE520BBA9FA0070537C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		556D1CE720BBA9FA0070537C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				556D1CE520BBA9FA0070537C /* AppDelegate.swift */,
 				556D1CE720BBA9FA0070537C /* ViewController.swift */,
 				556D1D0720BBABCC0070537C /* VideoCapture.swift */,
+				550AE90E221B843A0021C834 /* Measure.swift */,
 				556D1CE920BBA9FA0070537C /* Main.storyboard */,
 				556D1CEC20BBA9FC0070537C /* Assets.xcassets */,
 				556D1CEE20BBA9FC0070537C /* LaunchScreen.storyboard */,
@@ -205,6 +208,7 @@
 			files = (
 				55DF3E7321972FBF0080252C /* MobileNet.mlmodel in Sources */,
 				556D1D0820BBABCC0070537C /* VideoCapture.swift in Sources */,
+				550AE90F221B843A0021C834 /* Measure.swift in Sources */,
 				556D1CE820BBA9FA0070537C /* ViewController.swift in Sources */,
 				556D1CE620BBA9FA0070537C /* AppDelegate.swift in Sources */,
 			);
