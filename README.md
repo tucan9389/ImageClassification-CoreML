@@ -1,6 +1,8 @@
 # MobileNetApp for iOS
 
-
+![platform-ios](https://img.shields.io/badge/platform-ios-lightgrey.svg)
+![swift-version](https://img.shields.io/badge/swift-4-red.svg)
+![lisence](https://img.shields.io/badge/license-MIT-black.svg)
 
 ![DEMO-CoreML](https://github.com/tucan9389/MobileNetApp-CoreML/raw/master/resource/MobileNet-CoreML-DEMO.gif?raw=true)
 
@@ -8,14 +10,14 @@
 
 - Xcode 9.2+
 - iOS 11.0+
-- Swift 4.1
+- Swift 4
 
 ## 준비물
 
 - Core ML용 MobileNet 모델(`MobileNet.mlmodel`)
   ☞ [애플 홈페이지에 가서 MobileNet 다운](https://developer.apple.com/kr/machine-learning/build-run-models)
 
-> MobileNet는 깊이 전반에 관해 분리 가능한 컨볼루션이 있는 간결한 아키텍처를 기반으로 경량의 심층 신경망을 구축합니다. 
+> MobileNet는 깊이 전반에 관해 분리 가능한 컨볼루션이 있는 간결한 아키텍처를 기반으로 경량의 심층 신경망을 구축합니다.
 > 이미지에서 나무, 동물, 음식, 교통 수단, 사람 등 1000개의 카테고리로 나타나는 주요 물체를 감지합니다.
 >
 > − 애플 머신러닝 홈페이지 MobileNet 설명
