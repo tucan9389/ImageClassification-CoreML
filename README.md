@@ -42,9 +42,9 @@
 
 ### 1. Prerequisites
 
-#### 1.1 Import pose estimation model
+#### 1.1 Import the Core ML model
 
-![모델 불러오기.png](https://github.com/tucan9389/MobileNetApp-CoreML/blob/master/resource/%EB%AA%A8%EB%8D%B8%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.png?raw=true)
+![모델 불러오기.png](resource/%EB%AA%A8%EB%8D%B8%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.png)
 
 Once you import the model, compiler generates model helper class on build path automatically. You can access the model through model helper class by creating an instance, not through build path.
 
