@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		550AE90F221B843A0021C834 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550AE90E221B843A0021C834 /* Measure.swift */; };
 		556D1CE620BBA9FA0070537C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1CE520BBA9FA0070537C /* AppDelegate.swift */; };
-		556D1CE820BBA9FA0070537C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1CE720BBA9FA0070537C /* ViewController.swift */; };
+		556D1CE820BBA9FA0070537C /* LiveImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1CE720BBA9FA0070537C /* LiveImageViewController.swift */; };
 		556D1CEB20BBA9FA0070537C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556D1CE920BBA9FA0070537C /* Main.storyboard */; };
 		556D1CED20BBA9FC0070537C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556D1CEC20BBA9FC0070537C /* Assets.xcassets */; };
 		556D1CF020BBA9FC0070537C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556D1CEE20BBA9FC0070537C /* LaunchScreen.storyboard */; };
 		556D1CFB20BBA9FC0070537C /* MobileNetAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1CFA20BBA9FC0070537C /* MobileNetAppUITests.swift */; };
 		556D1D0820BBABCC0070537C /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D1D0720BBABCC0070537C /* VideoCapture.swift */; };
 		55DF3E7321972FBF0080252C /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55DF3E7221972FBF0080252C /* MobileNet.mlmodel */; };
+		71B831EF22E2995B00207D05 /* StillImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B831EE22E2995B00207D05 /* StillImageViewController.swift */; };
+		71B831F522E2A20200207D05 /* MobileNetV2Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71B831F222E2A20100207D05 /* MobileNetV2Int8LUT.mlmodel */; };
+		71B831F622E2A20200207D05 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71B831F322E2A20200207D05 /* MobileNetV2.mlmodel */; };
+		71B831F722E2A20200207D05 /* MobileNetV2FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71B831F422E2A20200207D05 /* MobileNetV2FP16.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +36,7 @@
 		550AE90E221B843A0021C834 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		556D1CE220BBA9FA0070537C /* MobileNetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		556D1CE520BBA9FA0070537C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		556D1CE720BBA9FA0070537C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		556D1CE720BBA9FA0070537C /* LiveImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveImageViewController.swift; sourceTree = "<group>"; };
 		556D1CEA20BBA9FA0070537C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		556D1CEC20BBA9FC0070537C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		556D1CEF20BBA9FC0070537C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +46,10 @@
 		556D1CFC20BBA9FC0070537C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		556D1D0720BBABCC0070537C /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		55DF3E7221972FBF0080252C /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		71B831EE22E2995B00207D05 /* StillImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillImageViewController.swift; sourceTree = "<group>"; };
+		71B831F222E2A20100207D05 /* MobileNetV2Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2Int8LUT.mlmodel; sourceTree = "<group>"; };
+		71B831F322E2A20200207D05 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		71B831F422E2A20200207D05 /* MobileNetV2FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2FP16.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +91,12 @@
 		556D1CE420BBA9FA0070537C /* MobileNetApp */ = {
 			isa = PBXGroup;
 			children = (
-				55DF3E7221972FBF0080252C /* MobileNet.mlmodel */,
 				556D1CE520BBA9FA0070537C /* AppDelegate.swift */,
-				556D1CE720BBA9FA0070537C /* ViewController.swift */,
-				556D1D0720BBABCC0070537C /* VideoCapture.swift */,
-				550AE90E221B843A0021C834 /* Measure.swift */,
 				556D1CE920BBA9FA0070537C /* Main.storyboard */,
+				556D1CE720BBA9FA0070537C /* LiveImageViewController.swift */,
+				71B831EE22E2995B00207D05 /* StillImageViewController.swift */,
+				71B831F922E2A22300207D05 /* utils */,
+				71B831F822E2A21100207D05 /* mlmodel */,
 				556D1CEC20BBA9FC0070537C /* Assets.xcassets */,
 				556D1CEE20BBA9FC0070537C /* LaunchScreen.storyboard */,
 				556D1CF120BBA9FC0070537C /* Info.plist */,
@@ -103,6 +111,26 @@
 				556D1CFC20BBA9FC0070537C /* Info.plist */,
 			);
 			path = MobileNetAppUITests;
+			sourceTree = "<group>";
+		};
+		71B831F822E2A21100207D05 /* mlmodel */ = {
+			isa = PBXGroup;
+			children = (
+				55DF3E7221972FBF0080252C /* MobileNet.mlmodel */,
+				71B831F322E2A20200207D05 /* MobileNetV2.mlmodel */,
+				71B831F422E2A20200207D05 /* MobileNetV2FP16.mlmodel */,
+				71B831F222E2A20100207D05 /* MobileNetV2Int8LUT.mlmodel */,
+			);
+			path = mlmodel;
+			sourceTree = "<group>";
+		};
+		71B831F922E2A22300207D05 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				550AE90E221B843A0021C834 /* Measure.swift */,
+				556D1D0720BBABCC0070537C /* VideoCapture.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,10 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B831F622E2A20200207D05 /* MobileNetV2.mlmodel in Sources */,
 				55DF3E7321972FBF0080252C /* MobileNet.mlmodel in Sources */,
+				71B831F522E2A20200207D05 /* MobileNetV2Int8LUT.mlmodel in Sources */,
+				71B831F722E2A20200207D05 /* MobileNetV2FP16.mlmodel in Sources */,
 				556D1D0820BBABCC0070537C /* VideoCapture.swift in Sources */,
 				550AE90F221B843A0021C834 /* Measure.swift in Sources */,
-				556D1CE820BBA9FA0070537C /* ViewController.swift in Sources */,
+				71B831EF22E2995B00207D05 /* StillImageViewController.swift in Sources */,
+				556D1CE820BBA9FA0070537C /* LiveImageViewController.swift in Sources */,
 				556D1CE620BBA9FA0070537C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WXJ4Z4H69;
 				INFOPLIST_FILE = MobileNetApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +424,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WXJ4Z4H69;
 				INFOPLIST_FILE = MobileNetApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
