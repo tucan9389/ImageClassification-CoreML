@@ -91,7 +91,7 @@ Once you import the model, compiler generates model helper class on build path a
 
 #### 1.2 Add permission in info.plist for device's camera access
 
-![prerequest_001_plist](/Users/canapio/Project/machine%20learning/MoT%20Labs/github_project/ml-ios-projects/PoseEstimation-CoreML/resource/prerequest_001_plist.png)
+![prerequest_001_plist](resource/prerequest_001_plist.png)
 
 ### 2. Dependencies
 
@@ -109,8 +109,8 @@ import Vision
 
 ```swift
 // MARK - Core ML model
-typealias ClassifierModel = MobileNet
-var coremlModel: ClassifierModel? = nil
+typealias ClassificationModel = MobileNet
+var coremlModel: ClassificationModel? = nil
 
 // MARK: - Vision Properties
 var request: VNCoreMLRequest?
@@ -123,7 +123,7 @@ var visionModel: VNCoreMLModel?
 override func viewDidLoad() {
     super.viewDidLoad()
 
-	if let visionModel = try? VNCoreMLModel(for: ClassifierModel().model) {
+	if let visionModel = try? VNCoreMLModel(for: ClassificationModel().model) {
         self.visionModel = visionModel
         request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
         request?.imageCropAndScaleOption = .scaleFill
