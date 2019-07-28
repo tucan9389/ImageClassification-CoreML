@@ -1,4 +1,4 @@
-# MobileNetApp for iOS
+# ImageClassification-CoreML
 
 ![platform-ios](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![swift-version](https://img.shields.io/badge/swift-4-red.svg)
