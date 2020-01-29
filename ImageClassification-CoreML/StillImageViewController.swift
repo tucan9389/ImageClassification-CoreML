@@ -73,7 +73,7 @@ extension StillImageViewController {
         guard let request = request else { fatalError() }
         
         // vision framework configures the input size of image following our model's input configuration automatically
-        let handler = VNImageRequestHandler(url: url, options: [:])
+        let handler = VNImageRequestHandler(url: url)
         try? handler.perform([request])
     }
     

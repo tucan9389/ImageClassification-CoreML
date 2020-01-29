@@ -22,12 +22,120 @@ class LiveImageViewController: UIViewController {
     
     // MARK - Performance Measurement Property
     private let 👨‍🔧 = 📏()
+    private var isInferencing = false
+    
+    let maf1 = MovingAverageFilter()
+    let maf2 = MovingAverageFilter()
+    let maf3 = MovingAverageFilter()
     
     // MARK - Core ML model
     // MobileNet(iOS11+), MobileNetV2(iOS11+), MobileNetV2FP16(iOS11.2+), MobileNetV2Int8LUT(iOS12+)
-    // Resnet50(iOS11+), Resnet50FP16(iOS11.2+), Resnet50Int8LUT(iOS12+), Resnet50Headless(N/A)
+    // Resnet50(iOS11+), Resnet50FP16(iOS11.2+), Resnet50Int8LUT(iOS12+), Resnet50Headless(iOS11+)
     // SqueezeNet(iOS11+), SqueezeNetFP16(iOS11.2+), SqueezeNetInt8LUT(iOS12+)
-    let classificationModel = MobileNetV2()
+    // OrientedImageClassifier
+    let classificationModel = SqueezeNetInt8LUT()
+    
+    //11 Pro
+    //XS
+    //XS Max
+    //XR
+    //X
+    //8
+    //8+
+    //7
+    //6S+
+    //6+
+    
+    //11 Pro
+    //MobileNet           : 13 15 29
+    //MobileNetV2         : 14 16 29
+    //MobileNetV2FP16     : 14 15 29
+    //MobileNetV2Int8LUT  : 14 15 29
+    //Resnet50            : 20 22 29
+    //Resnet50FP16        : 20 22 29
+    //Resnet50Int8LUT     : 20 22 29
+    //Resnet50Headless    : 13 14 29
+    //SqueezeNet          : 12 14 29
+    //SqueezeNetFP16      : 13 13 29
+    //SqueezeNetInt8LUT   : 13 14 29
+    //
+    //XS
+    //MobileNet           : 16 18 23
+    //MobileNetV2         : 21 23 23
+    //MobileNetV2FP16     : 20 24 23
+    //MobileNetV2Int8LUT  : 21 23 23
+    //Resnet50            : 27 30 23
+    //Resnet50FP16        : 26 28 23
+    //Resnet50Int8LUT     : 27 29 23
+    //Resnet50Headless    : 18 19 23
+    //SqueezeNet          : 17 18 23
+    //SqueezeNetFP16      : 17 18 23
+    //SqueezeNetInt8LUT   : 18 20 23
+    //
+    //XS Max
+    //MobileNet           : 18 20 23
+    //MobileNetV2         : 18 21 23
+    //MobileNetV2FP16     : 19 21 23
+    //MobileNetV2Int8LUT  : 21 23 23
+    //Resnet50            : 25 28 23
+    //Resnet50FP16        : 26 28 23
+    //Resnet50Int8LUT     : 25 28 23
+    //Resnet50Headless    : 13 13 23
+    //SqueezeNet          : 17 18 23
+    //SqueezeNetFP16      : 17 18 23
+    //SqueezeNetInt8LUT   : 19 20 23
+    //
+    //XR
+    //MobileNet           : 19 21 23
+    //MobileNetV2         : 21 23 23
+    //MobileNetV2FP16     : 20 23 23
+    //MobileNetV2Int8LUT  : 20 22 23
+    //Resnet50            : 26 29 23
+    //Resnet50FP16        : 27 30 23
+    //Resnet50Int8LUT     : 26 28 23
+    //Resnet50Headless    : 18 18 23
+    //SqueezeNet          : 18 20 23
+    //SqueezeNetFP16      : 18 19 23
+    //SqueezeNetInt8LUT   : 18 19 23
+    //
+    //X
+    //MobileNet           : 33 35 23
+    //MobileNetV2         : 46 48 20
+    //MobileNetV2FP16     : 48 50 18
+    //MobileNetV2Int8LUT  : 53 55 16
+    //Resnet50            : 61 64 14
+    //Resnet50FP16        : 64 66 14
+    //Resnet50Int8LUT     : 60 63 15
+    //Resnet50Headless    : 36 36 23
+    //SqueezeNet          : 24 25 23
+    //SqueezeNetFP16      : 24 26 23
+    //SqueezeNetInt8LUT   : 27 29 23
+    //
+    //7+
+    //MobileNet           : 43 46 20
+    //MobileNetV2         : 64 67 13
+    //MobileNetV2FP16     : 65 69 13
+    //MobileNetV2Int8LUT  : 64 67 13
+    //Resnet50            : 78 82 11
+    //Resnet50FP16        : 75 78 11
+    //Resnet50Int8LUT     : 77 80 11
+    //Resnet50Headless    : 54 54 16
+    //SqueezeNet          : 35 37 23
+    //SqueezeNetFP16      : 36 38 22
+    //SqueezeNetInt8LUT   : 34 37 23
+    //
+    //7
+    //MobileNet           : 35 37 23
+    //MobileNetV2         : 53 55 17
+    //MobileNetV2FP16     : 57 60 15
+    //MobileNetV2Int8LUT  : 53 56 16
+    //Resnet50            : 63 66 14
+    //Resnet50FP16        : 74 76 12
+    //Resnet50Int8LUT     : 75 78 12
+    //Resnet50Headless    : 53 54 17
+    //SqueezeNet          : 29 31 23
+    //SqueezeNetFP16      : 29 31 23
+    //SqueezeNetInt8LUT   : 30 32 23
     
     // MARK: - Vision Properties
     var request: VNCoreMLRequest?
@@ -71,7 +179,7 @@ class LiveImageViewController: UIViewController {
         if let visionModel = try? VNCoreMLModel(for: classificationModel.model) {
             self.visionModel = visionModel
             request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
-            request?.imageCropAndScaleOption = .scaleFill
+            request?.imageCropAndScaleOption = .centerCrop
         } else {
             fatalError()
         }
@@ -113,9 +221,10 @@ class LiveImageViewController: UIViewController {
 extension LiveImageViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?/*, timestamp: CMTime*/) {
         
-        // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
-        // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
-        if let pixelBuffer = pixelBuffer {
+        // the captured image from camera is contained on pixelBuffer
+        if !self.isInferencing, let pixelBuffer = pixelBuffer {
+            self.isInferencing = true
+            
             // start of measure
             self.👨‍🔧.🎬👏()
             
@@ -148,9 +257,19 @@ extension LiveImageViewController {
         DispatchQueue.main.sync {
             // end of measure
             self.👨‍🔧.🎬🤚()
+            
+            self.isInferencing = false
         }
     }
     
+//    func predict(with pixelBuffer: CVPixelBuffer) {
+//        if let output: MobileNetV2Output = try? MobileNetV2().prediction(image: pixelBuffer) {
+//            let predictedLabelText = output.classLabel
+//            let predictedConfidence = output.classLabelProbs[predictedLabelText] ?? -100.0
+//            print("\(predictedLabelText), \(predictedConfidence * 100) %")
+//        }
+//    }
+
     func showClassificationResult(results: [VNClassificationObservation]) {
         guard let result = results.first else {
             showFailResult()
@@ -161,7 +280,7 @@ extension LiveImageViewController {
     }
     
     func showCustomResult(results: [VNCoreMLFeatureValueObservation]) {
-        guard let result = results.first else {
+        guard results.first != nil else {
             showFailResult()
             return
         }
@@ -187,9 +306,30 @@ extension LiveImageViewController {
 // MARK: - 📏(Performance Measurement) Delegate
 extension LiveImageViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
-        //print(executionTime, fps)
-        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) mm"
-        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) mm"
-        self.fpsLabel.text = "fps: \(fps)"
+        self.maf1.append(element: Int(inferenceTime*1000.0))
+        self.maf2.append(element: Int(executionTime*1000.0))
+        self.maf3.append(element: fps)
+        
+        self.inferenceLabel.text = "inference: \(self.maf1.averageValue) ms"
+        self.etimeLabel.text = "execution: \(self.maf2.averageValue) ms"
+        self.fpsLabel.text = "fps: \(self.maf3.averageValue)"
+    }
+}
+
+class MovingAverageFilter {
+    private var arr: [Int] = []
+    private let maxCount = 10
+    
+    public func append(element: Int) {
+        arr.append(element)
+        if arr.count > maxCount {
+            arr.removeFirst()
+        }
+    }
+    
+    public var averageValue: Int {
+        guard !arr.isEmpty else { return 0 }
+        let sum = arr.reduce(0) { $0 + $1 }
+        return Int(Double(sum) / Double(arr.count))
     }
 }
